@@ -1,0 +1,128 @@
+#To use this requirements file:
+#Save it as requirements.txt in your root directory
+#Install all dependencies:
+#        pip install -r requirements.txt
+#Or install project-specific dependencies:
+# For example, for melanoma detection only
+#        pip install tensorflow keras opencv-python Pillow albumentations efficientnet
+
+#Note:
+#The versions specified are minimum versions (>=)
+#You might need to adjust versions based on your system compatibility
+#Some projects might have overlapping dependencies
+#For GPU support, you might need to install tensorflow-gpu instead of tensorflow
+#Additional environment setup:
+      # Create a virtual environment (recommended)
+#            python -m venv env
+            
+            # Activate virtual environment
+            # On Windows:
+#            env\Scripts\activate
+            # On Unix or MacOS:
+#           source env/bin/activate
+            
+            # Install requirements
+ #           pip install -r requirements.txt
+
+#You can also split this into separate requirement files for each project if preferred:
+
+#requirements/
+#├── base.txt
+#├── resume_classification.txt
+#├── human_activity.txt
+#├── earthquake.txt
+#├── forgery_detection.txt
+#├── melanoma.txt
+#├── lstm.txt
+#├── stock_market.txt
+#└── hospital_management.txt
+
+
+
+
+
+# Common Dependencies
+numpy>=1.21.0
+pandas>=1.3.0
+scikit-learn>=0.24.2
+matplotlib>=3.4.2
+seaborn>=0.11.1
+jupyter>=1.0.0
+
+# Resume Classification
+nltk>=3.6.2
+spacy>=3.1.0
+python-docx>=0.8.11
+PyPDF2>=2.0.0
+textract>=1.6.3
+gensim>=4.0.1
+transformers>=4.9.0
+
+# Human Activity Recognition
+scipy>=1.7.0
+tensorflow>=2.6.0
+keras>=2.6.0
+scikit-learn>=0.24.2
+pandas>=1.3.0
+numpy>=1.21.0
+
+# Earthquake Prediction
+statsmodels>=0.12.2
+geopy>=2.2.0
+folium>=0.12.1
+plotly>=5.1.0
+scipy>=1.7.0
+
+# Forgery Detection in Spliced Images
+opencv-python>=4.5.3
+Pillow>=8.3.1
+tensorflow>=2.6.0
+keras>=2.6.0
+scikit-image>=0.18.2
+
+# Melanoma Detection
+tensorflow>=2.6.0
+keras>=2.6.0
+opencv-python>=4.5.3
+Pillow>=8.3.1
+albumentations>=1.0.3
+efficientnet>=1.0.0
+
+# LSTM Time Series Analysis
+tensorflow>=2.6.0
+keras>=2.6.0
+pandas_datareader>=0.10.0
+yfinance>=0.1.63
+
+# Stock Market Prediction
+yfinance>=0.1.63
+pandas_datareader>=0.10.0
+tensorflow>=2.6.0
+keras>=2.6.0
+ta>=0.7.0  # Technical Analysis library
+prophet>=1.0.1
+
+# Swasth Hospital Management
+django>=3.2.6
+djangorestframework>=3.12.4
+psycopg2-binary>=2.9.1
+django-cors-headers>=3.8.0
+python-dotenv>=0.19.0
+Pillow>=8.3.1
+jwt>=1.3.1
+bcrypt>=3.2.0
+
+# Development Tools
+pytest>=6.2.5
+black>=21.7b0
+flake8>=3.9.2
+isort>=5.9.3
+
+# Jupyter Environment
+ipykernel>=6.0.3
+notebook>=6.4.0
+ipywidgets>=7.6.3
+
+# Documentation
+sphinx>=4.1.2
+mkdocs>=1.2.2
