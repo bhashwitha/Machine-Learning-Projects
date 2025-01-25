@@ -11,6 +11,7 @@ A collection of diverse machine learning projects showcasing various application
 ## 📊 Projects Overview
 
 ### 1. Swasth Hospital Management
+**Application still in development stage**
 - Healthcare management system
 - Patient records and appointment management
 - Includes data analysis for healthcare metrics
