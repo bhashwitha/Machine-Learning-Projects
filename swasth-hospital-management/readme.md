@@ -1,5 +1,7 @@
 # 🏥 Swasth Hospital Management System
 
+**Application still in Developing stage**
+
 A modern, AI-powered hospital management system built with Next.js, TypeScript, and TailwindCSS.
 
 ## ✨ Features
