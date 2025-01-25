@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  role          String    // doctor, admin, etc.
+  department    String?
+  appointments  Appointment[]
+  notes         Note[]
+  prescriptions Prescription[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Patient {
+  id              String    @id @default(cuid())
+  name            String
+  email           String?   @unique
+  dateOfBirth     DateTime
+  gender          String
+  bloodType       String?
+  contactNumber   String?
+  address         String?
+  medicalHistory  MedicalHistory?
+  appointments    Appointment[]
+  notes           Note[]
+  prescriptions   Prescription[]
+  testResults     TestResult[]
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model MedicalHistory {
+  id              String    @id @default(cuid())
+  patientId       String    @unique
+  patient         Patient   @relation(fields: [patientId], references: [id])
+  allergies       String[]
+  conditions      String[]
+  surgeries       String[]
+  medications     String[]
+  familyHistory   String[]
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model Appointment {
+  id          String    @id @default(cuid())
+  patientId   String
+  patient     Patient   @relation(fields: [patientId], references: [id])
+  doctorId    String
+  doctor      User      @relation(fields: [doctorId], references: [id])
+  date        DateTime
+  status      String    // scheduled, completed, cancelled
+  type        String    // in-person, video
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Note {
+  id          String    @id @default(cuid())
+  patientId   String
+  patient     Patient   @relation(fields: [patientId], references: [id])
+  doctorId    String
+  doctor      User      @relation(fields: [doctorId], references: [id])
+  content     String
+  summary     String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Prescription {
+  id          String    @id @default(cuid())
+  patientId   String
+  patient     Patient   @relation(fields: [patientId], references: [id])
+  doctorId    String
+  doctor      User      @relation(fields: [doctorId], references: [id])
+  medications Medication[]
+  startDate   DateTime
+  endDate     DateTime?
+  status      String    // active, completed, cancelled
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Medication {
+  id              String        @id @default(cuid())
+  prescriptionId  String
+  prescription    Prescription  @relation(fields: [prescriptionId], references: [id])
+  name            String
+  dosage          String
+  frequency       String
+  duration        Int
+  notes           String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model TestResult {
+  id          String    @id @default(cuid())
+  patientId   String
+  patient     Patient   @relation(fields: [patientId], references: [id])
+  type        String
+  result      Json
+  analysis    String?
+  date        DateTime
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+} 
